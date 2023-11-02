@@ -59,9 +59,9 @@ class FreeBet(models.Model):
 
 
 class Free(models.Model):
-    daily_sure_tips = models.ForeignKey(DailySureTips, on_delete=models.PROTECT, null=True, blank=True, related_name='daily_sure_tips_free')
-    over_under =  models.ForeignKey(OverUnderBet, on_delete=models.SET_NULL, null=True, blank=True, related_name='over_under_free')
-    Basketball = models.ForeignKey(GameMatch, on_delete=models.SET_NULL, null=True, blank=True, related_name='basketball_free')
+    daily_sure_tips = models.ForeignKey(DailySureTips, on_delete=models.PROTECT, null=True, blank=True, related_name='daily_sure_tips')
+    over_under =  models.ForeignKey(OverUnderBet, on_delete=models.SET_NULL, null=True, blank=True, related_name='over_under')
+    Basketball = models.ForeignKey(GameMatch, on_delete=models.SET_NULL, null=True, blank=True, related_name='basketball')
     FootballTips = models.ForeignKey(DailySureTips, on_delete=models.PROTECT, null=True, blank=True, related_name='football_tips_free')
     single_tips = models.ForeignKey(DailySureTips, on_delete=models.PROTECT, null=True, blank=True, related_name='single_tips_free')
     bonus_surprise = models.ForeignKey(FreeBet, on_delete=models.SET_NULL, null=True, blank=True, related_name='bonus_surprise_free')
@@ -80,15 +80,19 @@ class CorrectScoreBet(models.Model):
     team_a = models.CharField(max_length=50)
     team_b = models.CharField(max_length=50)   
     exact_score = models.CharField(max_length=10)  
-    odds = models.DecimalField(max_digits=5, decimal_places=2)    
-    bet_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    odds = models.DecimalField(max_digits=5, decimal_places=2)  
+
+
+    def __str__(self):
+        return self.match 
+    
 
 #multibets
 class MultiBet(models.Model):    
     bettor = models.CharField(max_length=100)    
     matches = models.ManyToManyField('Match', related_name='multi_bets')    
     total_odds = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)    
-    bet_amount = models.DecimalField(max_digits=8, decimal_places=2)   
+     
     timestamp = models.DateTimeField(auto_now_add=True)
     
     def save(self, *args, **kwargs):
