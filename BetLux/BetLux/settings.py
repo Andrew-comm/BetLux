@@ -74,7 +74,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'BetLux.wsgi.application'
+WSGI_APPLICATION = 'BetLux.wsgi.app'
 
 
 # Database
