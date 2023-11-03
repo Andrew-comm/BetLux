@@ -1,1 +1,1 @@
-web: gunicorn BetLux.wsgi
+web: gunicorn BetLux.wsgi --log-file -
