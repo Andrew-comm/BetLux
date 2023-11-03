@@ -1,7 +1,6 @@
 from django.http import HttpResponse
-from django.shortcuts import render
-from django.http import JsonResponse
 from rest_framework.views import APIView
+from rest_framework.permissions import AllowAny  
 from .models import Free, VIP, bestOffers
 from .serializers import FreeSerializer, VIPSerializer, BestOffersSerializer
 from rest_framework.decorators import api_view
@@ -16,7 +15,8 @@ def homeView(request):
     response = HttpResponse("This is a simple HTTP response.")
     return response
 
-class freeList(APIView):    
+class freeList(APIView):
+    permission_classes = [AllowAny]     
     def get(self, request, format=None):
         free = Free.objects.all()
         serializer = FreeSerializer(free, many=True)
@@ -30,7 +30,8 @@ class freeList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class VIPList(APIView):    
+class VIPList(APIView):
+    permission_classes = [AllowAny]     
     def get(self, request, format=None):
         vip = VIP.objects.all()
         serializer = VIPSerializer(vip, many=True)
@@ -44,7 +45,8 @@ class VIPList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 
-class BestOffersList(APIView):    
+class BestOffersList(APIView):
+    permission_classes = [AllowAny]     
     def get(self, request, format=None):
         offers = bestOffers.objects.all()
         serializer = BestOffersSerializer(offers, many=True)
