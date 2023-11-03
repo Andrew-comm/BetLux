@@ -30,7 +30,7 @@ SECRET_KEY = str(os.getenv('CUSTOM_SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://betblitz.onrender.com/']
+ALLOWED_HOSTS = []
 
 
 # Application definition
