@@ -15,7 +15,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 load_dotenv()
-import dj_database_url
+# import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -75,20 +75,23 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'BetLux.wsgi.app'
+WSGI_APPLICATION = 'BetLux.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-if not DEBUG:
-    DATABASES = {'default': dj_database_url.parse(os.getenv('DATABASE_URL'))}
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': 'db.sqlite3',
-        }}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME':os.getenv('DB-NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
+    }
+}
+
     
 # if 'DATABASE_URL' in os.getenv:
 #     DATABASES['default'] = dj_database_url.config(
@@ -144,5 +147,3 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
