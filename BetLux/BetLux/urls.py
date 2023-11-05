@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from BetBlitz. views import freeList, VIPList, BestOffersList
+from BetBlitz. views import freeList, VIPList, BestOffersList, HT_FT_list
 from BetBlitz import views
 
 urlpatterns = [
@@ -25,6 +25,8 @@ urlpatterns = [
     path('free/', freeList.as_view(), name='free'),
     path('VIP/', VIPList.as_view(), name='vip'),     
     path('offers/', BestOffersList.as_view(), name='offers'), 
+
+    path('ht-ft/', HT_FT_list.as_view(), name='ht-ft')
 
 ]
 
