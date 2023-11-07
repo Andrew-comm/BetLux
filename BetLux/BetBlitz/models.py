@@ -58,6 +58,9 @@ class FreeBet(models.Model):
     
 
 
+    
+
+
 class Free(models.Model):
     daily_sure_tips = models.ForeignKey(DailySureTips, on_delete=models.PROTECT, null=True, blank=True, related_name='daily_sure_tips')
     over_under =  models.ForeignKey(OverUnderBet, on_delete=models.SET_NULL, null=True, blank=True, related_name='over_under')
@@ -66,8 +69,7 @@ class Free(models.Model):
     single_tips = models.ForeignKey(DailySureTips, on_delete=models.PROTECT, null=True, blank=True, related_name='single_tips_free')
     bonus_surprise = models.ForeignKey(FreeBet, on_delete=models.SET_NULL, null=True, blank=True, related_name='bonus_surprise_free')
     Tennis = models.ForeignKey(GameMatch, on_delete=models.SET_NULL, null=True, blank=True, related_name='tennis_free')
-
-
+    daily20 = models.ForeignKey('MultiBet', on_delete=models.SET_NULL, null =True, blank=True)
 
 
 

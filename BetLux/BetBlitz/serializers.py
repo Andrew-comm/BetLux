@@ -24,6 +24,12 @@ class FreeBetSerializer(serializers.ModelSerializer):
         model = FreeBet
         fields = '__all__'
 
+
+
+
+
+
+
 class FreeSerializer(serializers.ModelSerializer):
     daily_sure_tips = DailySureTipsSerializer()
     over_under = OverUnderBetSerializer()

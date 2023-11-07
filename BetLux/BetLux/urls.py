@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from BetBlitz. views import freeList, VIPList, BestOffersList, HT_FT_list
+from BetBlitz. views import freeList, VIPList, BestOffersList, HT_FT_list, Multi50_list, Multi10_list, SpecialVip_list, FixedVip_list,MxedVip_list, SingleVIP_list, CorrectScore_list, DailyTipsList, OverUnderList, GameList, BonusList, Multi20_List
 from BetBlitz import views
 
 urlpatterns = [
@@ -26,7 +26,21 @@ urlpatterns = [
     path('VIP/', VIPList.as_view(), name='vip'),     
     path('offers/', BestOffersList.as_view(), name='offers'), 
 
-    path('ht-ft/', HT_FT_list.as_view(), name='ht-ft')
+    path('tips/', DailyTipsList.as_view(), name='tips'), 
+    path('over_under/', OverUnderList.as_view(), name='over_under'), 
+    path('game/', GameList.as_view(), name='game'), 
+    path('bonus/', BonusList.as_view(), name='bonus'), 
+    path('multi20/', Multi20_List.as_view(), name='multi20'), 
+
+    path('ht-ft/', HT_FT_list.as_view(), name='ht-ft'),
+    path('multi50/', Multi50_list.as_view(), name='multi50'),
+    path('multi10/', Multi10_list.as_view(), name='multi10'),
+    path('special/', SpecialVip_list.as_view(), name='special'),
+    path('fixed-vip/', FixedVip_list.as_view(), name='fixed-vip'),
+    path('mixed-vip/', MxedVip_list.as_view(), name='mixed-vip'),
+    path('single-vip/', SingleVIP_list.as_view(), name='single-vip'),
+    path('correct-score/', CorrectScore_list.as_view(), name='correct-score'),
+
 
 ]
 
